@@ -1,193 +1,84 @@
-# Gui_KNN
+# Project README
 
+## Overview
+- The project is a simple GUI application written in C using a hypothetical Windowing API (`WindowingAPI`) that supports cross-platform development (Linux, Windows, WebAssembly, Wine). It demonstrates basic GUI functionality such as creating a window, handling events, and rendering shapes.
 
-## Project Overview
+## Features
+- **GUI Creation**: Creates a window with a specified title and dimensions.
+- **Event Handling**: Handles window close events.
+- **Rendering**: Renders circles of different colors based on the data stored in an internal data structure.
+- **Cross-platform Build**: Supports building for Linux, Windows, WebAssembly (via Emscripten), and Wine.
 
-This project implements specialized functionality related to knn.
-
-## Core Components
-
-### Main Functionality
-- Implements core algorithms for knn
-- Efficient data structures
-- Optimized performance
-- Clean code organization
-
-### Technical Features
-- C/C++ implementation
-- Dynamic memory management
-- Platform-independent design
-- Real-time capable
-
-### Architecture
-- Module separation
-- Clear interface design
-- Proper abstraction layers
-- Extensible design
-
-## Use Cases
-- Production systems
-- Educational purposes
-- Research applications
-- Performance-critical operations
-
-## Performance Characteristics
-- Optimized algorithms
-- Efficient memory usage
-- Scalable architecture
-- Minimal overhead
-
-## Implementation Quality
-- Well-organized code
-- Meaningful naming
-- Proper error handling
-- Memory management
-
-## Build and Deployment
-- Standard C/C++ compilation
-- Makefile-based building
-- Cross-platform support
-- Easy integration
-
-
-## Building the Project
+## Project Structure
+```
+KNN/
+├── build/              
+├── src/                
+│   ├── Main.c          
+│   └── WindowingAPI.h  
+├── Makefile.linux      
+├── Makefile.windows    
+├── Makefile.wine       
+└── README.md           
+└── LICENCE             
+└── .gitignore
+```
 
 ### Prerequisites
-- C/C++ Compiler (GCC, Clang, or MSVC)
+- C/C++ Compiler and Debugger (GCC, Clang)
 - Make utility
 - Standard development tools
+- Libraries needed in specific projects:
+  - Linux: X11 for GUI, libpng/libjpeg for image handling.
+  - Windows: user32.dll, gdi32.dll, winmm.dll.
+  - WebAssembly: Emscripten SDK.
+  - Wine: mingw-w64 compiler.
 
-### Build Steps
+## Build & Run
+### Linux
+- To build the project:
+  ```bash
+  make -f Makefile.linux all
+  ```
+- To run the application:
+  ```bash
+  make -f Makefile.linux exe
+  ```
 
-1. Navigate to project directory:
-```bash
-cd Gui_KNN
-```
+### Windows
+- To build the project:
+  ```bash
+  make -f Makefile.windows all
+  ```
+- To run the application:
+  ```bash
+  make -f Makefile.windows exe
+  ```
 
-2. Build the project:
-```bash
-make -f Makefile.(os) all
-```
+### WebAssembly (Emscripten)
+- To build the project:
+  ```bash
+  make -f Makefile.web all
+  ```
+- To serve and run the application locally:
+  ```bash
+  make -f Makefile.web exe
+  ```
 
-3. For clean rebuild:
-```bash
-make -f Makefile.(os) clean
-make -f Makefile.(os) all
-```
-
-4. If there are ./bin and ./libs directories, build libs with:
-```bash
-make -f Makefile.(os) cleanlib
-make -f Makefile.(os) lib
-```
-
-### Build Options
-```bash
-make -f Makefile.(os) all         # build output
-make -f Makefile.(os) do        # build + exe output
-make -f Makefile.(os) clean   # Remove build artifacts
-```
-
-## Running the Project
-
-Execute the compiled binary:
-
-```bash
-./build/Main(.exe)
-```
-
-Or using make:
-```bash
-make -f Makefile.(os) exe
-```
-
-## Project Organization
-
-```
-Gui_KNN/
-├── src/
-│   ├── Main.c          # Entry point
-│   └── *.c             # Implementation files
-├── Makefile            # Build configuration
-└── README.md           # This file
-```
-
-## Technical Details
-
-### Language: C/C++
-- Performance-oriented
-- Direct hardware access where needed
-- Memory efficient
-- Widely portable
-
-### Key Technologies
-- Standard C library
-- System-specific libraries as needed
-- Algorithm optimization
-- Efficient data structures
-
-### Code Quality
-- Clean, readable implementation
-- Proper error handling
-- Resource management
-- Well-documented algorithms
-
-## Development Notes
-
-### Architecture Decisions
-- Modular design for reusability
-- Efficient algorithms for performance
-- Clear separation of concerns
-- Extensible structure
-
-### Performance Optimizations
-- Algorithm efficiency
-- Memory layout optimization
-- Cache-conscious programming
-- Minimal overhead
-
-### Portability
-- Cross-platform compatible
-- Platform-specific optimizations where possible
-- Standard library usage
-- No external dependencies (where feasible)
-
-## Troubleshooting
-
-### Build Issues
-- Ensure compiler is installed
-- Check file paths and permissions
-- Verify Make installation
-- Review compiler error messages
-
-### Runtime Issues
-- Check input data validity
-- Verify file accessibility
-- Ensure sufficient memory
-- Review output format
-
-### Performance Issues
-- Check compiler optimization flags
-- Profile hot code paths
-- Review algorithm complexity
-- Consider input size
-
-## Future Improvements
-
-Potential enhancements:
-- Additional optimization opportunities
-- Extended functionality
-- Platform-specific optimizations
-- Performance profiling
-
-## References
-
-For technical background:
-- Algorithm textbooks
-- Computer science references
-- Language documentation
-- Online educational resources
+### Wine
+- To build the project:
+  ```bash
+  make -f Makefile.wine all
+  ```
+- To debug the application using WINE:
+  ```bash
+  make -f Makefile.wine debug
+  ```
+- To run the application using WINE:
+  ```bash
+  make -f Makefile.wine exe
+  ```
 
 ---
 
-*Project implementing practical algorithms and data structures in C/C++*
+**Note**: The actual implementation of the WindowingAPI and other dependencies are assumed to be correctly set up in the project environment.
