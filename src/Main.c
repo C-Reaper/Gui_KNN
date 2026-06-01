@@ -12,7 +12,7 @@ TransformedView tv;
 KNN knn;
 
 void Setup(AlxWindow* w){
-    RGA_Set(Time_Nano());
+    Random_Set(Time_Nano());
 
 	tv = TransformedView_New((Vec2){ GetWidth(),GetHeight() });
 	knn = KNN_New(3U,2U,3U);
